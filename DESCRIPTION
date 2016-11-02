@@ -1,6 +1,6 @@
 Package: dams
 Title: Dams in the United States from the National Inventory of Dams
-        (NID)
+    (NID)
 Description: The single largest source of dams in the United States is the
     National Inventory of Dams (NID, http://nid.usace.army.mil) from the US
     Army Corps of Engineers. Entire data from the NID cannot be obtained all at
@@ -14,13 +14,23 @@ Description: The single largest source of dams in the United States is the
 Version: 0.1
 Author: Gopi Goteti <my.ration.shop@gmail.com>
 Maintainer: Gopi Goteti <my.ration.shop@gmail.com>
-Imports: RCurl
-Suggests: ggplot2, maps, mapproj
+Imports:
+    RCurl,
+    rappdirs
+Suggests:
+    ggplot2,
+    maps,
+    mapproj,
+    testthat
 License: GPL (>= 2)
 LazyData: true
-Collate: 'data.r' 'extract_nid.r'
+Collate:
+    'data.r'
+    'extract_nid.r'
 Packaged: 2014-05-05 05:53:24 UTC; ggoteti
-Depends: R (>= 2.10)
+Depends:
+    R (>= 2.10)
 NeedsCompilation: no
 Repository: CRAN
 Date/Publication: 2014-05-05 08:29:15
+RoxygenNote: 5.0.1

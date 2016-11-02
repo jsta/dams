@@ -24,6 +24,10 @@ devtools::install_github("jsta/dams")
 Usage
 -----
 
+``` r
+dams_sample <- extract_nid()
+```
+
 References
 ----------
 

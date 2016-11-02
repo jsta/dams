@@ -12,8 +12,10 @@ Description: The single largest source of dams in the United States is the
     sample cleaned data from the NID and provides functionality to access the
     entire cleaned NID data.
 Version: 0.1
-Author: Gopi Goteti <my.ration.shop@gmail.com>
-Maintainer: Gopi Goteti <my.ration.shop@gmail.com>
+Authors@R: c(
+    person("Gopi", "Goteti", role = c("aut","cre"), email = "my.ration.shop@gmail.com"),
+    person("Joseph", "Stachelek", role = "ctb")
+  )
 Imports:
     RCurl,
     rappdirs

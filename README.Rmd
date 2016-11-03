@@ -35,10 +35,13 @@ devtools::install_github("jsta/dams")
 ## Usage
 
 ```{r eval=FALSE}
-dams_sample <- extract_nid()
+library(dams)
+data(nid_cleaned)
 ```
 
 ## References
+
+
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 

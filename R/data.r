@@ -1,4 +1,4 @@
-#' Sample of dams from the NID database
+#' Dams from the NID database
 #' 
 #' The data dictionary from NID provides details on the data attributes. 
 #' Below is only a short description of the attributes. Note that not all 
@@ -119,8 +119,8 @@
 #' NID's website in March 2014.
 #' 
 #' @docType data
-#' @name nid_sample
-#' @usage data(nid_sample)
+#' @name nid_cleaned
+#' @usage data(nid_cleaned)
 #' @format Data frame with 64 columns and 100 rows
 #' @keywords datasets
 NULL

@@ -25,7 +25,8 @@ Usage
 -----
 
 ``` r
-dams_sample <- extract_nid()
+library(dams)
+data(nid_cleaned)
 ```
 
 References

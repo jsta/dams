@@ -26,7 +26,7 @@ require(mapproj)
 Read sample data and get the columns names.
 
 <<>>=
-dams_sample <- extract_nid()
+dams_sample <- nid_cleaned
 
 dim(dams_sample)
 

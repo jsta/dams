@@ -13,32 +13,21 @@ This document provides examples on how to obtain and extract data using the dams
 
 \section{Data Attributes}
 
-If you have not already done so, load the package along with RCurl (for data extraction from bitbucket.org), ggplot and maps (for graphics).
+If you have not already done so, load the package along with ggplot and maps (for graphics).
 
 <<>>=
 require(dams)
-require(RCurl)
 require(ggplot2)
 require(maps)
 require(mapproj)
 @
 
-Read sample data and get the columns names.
-
-<<>>=
-dams_sample <- nid_cleaned
-
-dim(dams_sample)
-
-colnames(dams_sample)
-@
-
-\section{Enitre Dataset}
+\section{Entire Dataset}
 
 Get the entire dataset. This might take a few moments.
 
 <<>>=
-dams_all <- extract_nid(sample_only = FALSE)
+dams_all <- nid_cleaned
 
 dim(dams_all)
 

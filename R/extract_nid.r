@@ -3,7 +3,8 @@
 #' @param sample_only logical flag indicating the desire to get only a sample 
 #' of the NID data (which comes with this package) or the entire dataset 
 #' @export
-#' @import rappdirs user_data_dir
+#' @importFrom rappdirs user_data_dir
+#' @importFrom utils data read.csv
 #' @examples
 #' # sample NID data, 100 records only
 #' dams_sample <- extract_nid()
@@ -40,7 +41,7 @@ extract_nid <- function(sample_only = TRUE) {
     nid_url <- "https://bitbucket.org/rationshop/packages/raw/master/nid_cleaned.txt"
     if(url.exists(nid_url, ssl.verifypeer = FALSE)) {
       message("downloading data from bitbucket. might take a few moments...")
-      nid_data <- getURL(nid_url, ssl.verifypeer = FALSE)    
+      nid_data <- RCurl::getURL(nid_url, ssl.verifypeer = FALSE)    
       nid_cleaned <- read.csv(text = nid_data, header = TRUE, quote = "", as.is = TRUE, sep = "\t")
     } else {
       stop("URL for the complete NID data does not exist!")

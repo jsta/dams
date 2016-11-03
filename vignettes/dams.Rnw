@@ -9,7 +9,7 @@
 \author{Gopi Goteti}
 \maketitle
 
-This document provides examples on how to obtain and extract data using the dams package and how to create summary graphics of the extracted data.
+This document provides examples on how to obtain data using the dams package and how to create summary graphics of the extracted data.
 
 \section{Data Attributes}
 

@@ -11,11 +11,13 @@ Description: The single largest source of dams in the United States is the
     data was checked for potential errors and cleaned. This package provides
     sample cleaned data from the NID and provides functionality to access the
     entire cleaned NID data.
-Version: 0.1
+Version: 0.1.09
 Authors@R: c(
     person("Gopi", "Goteti", role = c("aut","cre"), email = "my.ration.shop@gmail.com"),
     person("Joseph", "Stachelek", role = "ctb")
   )
+URL: https://github.com/jsta/dams
+BugReports: http://www.github.com/jsta/dams/issues
 Imports:
     RCurl,
     rappdirs

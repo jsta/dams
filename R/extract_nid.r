@@ -1,35 +1,16 @@
-#' Extract desired data on dams from pre-processed NID data
+#' Retrieve desired data on dams from pre-processed NID data
 #'
-#' @param sample_only logical flag indicating the desire to get only a sample 
-#' of the NID data (which comes with this package) or the entire dataset 
 #' @export
-#' @importFrom rappdirs user_data_dir
 #' @importFrom utils data read.csv
 #' @examples
-#' # sample NID data, 100 records only
-#' dams_sample <- extract_nid()
 #' 
 #' # entire NID data, all the 74000+ records from bitbucket.org/rationshop
 #' \dontrun{
-#' dams_all <- extract_nid(sample_only = FALSE)
+#' dams_all <- get_nid()
 #' }
 #'
-extract_nid <- function(sample_only = TRUE) {
+get_nid <- function() {
   
-  #check inputs
-  if (!is.logical(sample_only)) {
-    stop("sample_only has to be either TRUE or FALSE!")
-  }
-  
-  if(sample_only){
-    # get sample data
-    nid_sample <- NULL
-    data(nid_sample, envir = environment())
-    
-    return (nid_sample)
-    
-  }else{
-    
     # get complete data from bitbucket
     # code based on three tips - 
     # RCurl example on https
@@ -48,5 +29,5 @@ extract_nid <- function(sample_only = TRUE) {
     }
     
     return (nid_cleaned)
-  }  
+    
 }

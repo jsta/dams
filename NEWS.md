@@ -7,6 +7,8 @@ dams 0.2
 
 ### MINOR IMPROVEMENTS
 
+* Converted vignette to Rmd
+
 * Remade docs with roxygen2
 
 * Package no longer contains data sample subset and `extract_nid` no longer references it.

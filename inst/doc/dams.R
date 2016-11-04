@@ -1,35 +1,22 @@
-### R code from vignette source 'dams.Rnw'
-
-###################################################
-### code chunk number 1: dams.Rnw:18-22
-###################################################
+## ----message=FALSE-------------------------------------------------------
 require(dams)
 require(ggplot2)
 require(maps)
 require(mapproj)
 
-
-###################################################
-### code chunk number 2: dams.Rnw:29-34
-###################################################
+## ------------------------------------------------------------------------
 dams_all <- nid_cleaned
 
 dim(dams_all)
 
 head(dams_all, 3)
 
-
-###################################################
-### code chunk number 3: dams.Rnw:41-44
-###################################################
+## ------------------------------------------------------------------------
 gfx_data <- dams_all[, c("Year_Completed", "State")]
 
 head(gfx_data)
 
-
-###################################################
-### code chunk number 4: dams.Rnw:49-58
-###################################################
+## ------------------------------------------------------------------------
 gfx_data$Year <- cut(gfx_data$Year_Completed, 
                      breaks = c(0, 1850, seq(1900, 2000, 10), 2014), 
                      labels = c("<1850", "1850-1900", "1910", "1920", "1930", 
@@ -40,38 +27,20 @@ table(gfx_data$Year)
 year_counts <- as.data.frame(table(gfx_data$Year), stringsAsFactors = FALSE)
 colnames(year_counts) <- c("Year", "Count")
 
-
-###################################################
-### code chunk number 5: dams.Rnw:63-67
-###################################################
+## ------------------------------------------------------------------------
 gfx_bar <- ggplot(year_counts, aes(x = Year, y = Count))
 gfx_bar <- gfx_bar + geom_bar(position = "dodge", stat = "identity")
 gfx_bar <- gfx_bar + ylab("Number of Dams") + xlab("Year of Completion")
 gfx_bar <- gfx_bar + ggtitle("Number of Dams in the NID Database")
 
-
-###################################################
-### code chunk number 6: fig1plot
-###################################################
+## ----fig1plot, echo=FALSE, fig.width=8, fig.height=6,fig.align="center"----
 plot(gfx_bar)
 
-
-###################################################
-### code chunk number 7: fig1
-###################################################
-plot(gfx_bar)
-
-
-###################################################
-### code chunk number 8: dams.Rnw:85-87
-###################################################
+## ------------------------------------------------------------------------
 gfx_data <- subset(gfx_data, !(State %in% c("AK", "HI", "PR", "GU")))
 sort(table(gfx_data$State))
 
-
-###################################################
-### code chunk number 9: dams.Rnw:92-127
-###################################################
+## ------------------------------------------------------------------------
 state_counts <- as.data.frame(table(gfx_data$State), stringsAsFactors = FALSE)
 colnames(state_counts) <- c("state", "Count")
 
@@ -108,24 +77,11 @@ gfx_map <- gfx_map + guides(fill = guide_legend(title = "Number of Dams"))
 gfx_map <- gfx_map + scale_fill_brewer(palette = "Accent")
 gfx_map <- gfx_map + coord_map()
 
-
-###################################################
-### code chunk number 10: fig2plot
-###################################################
+## ----fig2plot, echo=FALSE, fig.height=6,fig.width=8----------------------
 plot(gfx_map)
 
-
-###################################################
-### code chunk number 11: fig2
-###################################################
-plot(gfx_map)
-
-
-###################################################
-### code chunk number 12: dams.Rnw:147-150
-###################################################
+## ------------------------------------------------------------------------
 flood_dams <- subset(dams_all, Primary_Purpose == "Flood Control")
 
 table(flood_dams$State)
-
 

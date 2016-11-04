@@ -1,52 +1,55 @@
-\documentclass{article}
-
-% \VignetteIndexEntry{Dams Package Demo}
-
-\begin{document}
-\SweaveOpts{concordance=TRUE}
-
-\title{Dams Package Demo}
-\author{Gopi Goteti}
-\maketitle
+---
+title: "Dams Package Demo"
+author:
+- "Gopi Goteti"
+- "Joseph Stachelek"
+date: "`r Sys.Date()`"
+fig_caption: true
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Dams Package Demo}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
 
 This document provides examples on how to obtain data using the dams package and how to create summary graphics of the extracted data.
 
-\section{Data Attributes}
+## Data Attributes
 
 If you have not already done so, load the package along with ggplot and maps (for graphics).
 
-<<>>=
+```{r message=FALSE}
 require(dams)
 require(ggplot2)
 require(maps)
 require(mapproj)
-@
+```
 
-\section{Entire Dataset}
+### Load Data
 
-Get the entire dataset. This might take a few moments.
+Load the entire dataset. This might take a few moments.
 
-<<>>=
+```{r }
 dams_all <- nid_cleaned
 
 dim(dams_all)
 
 head(dams_all, 3)
-@
+```
 
-\section{Summary Graphics}
+## Summary Graphics
 
-Data for graphics.
+### Data for graphics
 
-<<>>=
+```{r }
 gfx_data <- dams_all[, c("Year_Completed", "State")]
 
 head(gfx_data)
-@
+```
 
-Counts of number of dams built per decade or other time period of interest.
+### Counts of number of dams built per decade or other time period of interest
 
-<<>>=
+```{r }
 gfx_data$Year <- cut(gfx_data$Year_Completed, 
                      breaks = c(0, 1850, seq(1900, 2000, 10), 2014), 
                      labels = c("<1850", "1850-1900", "1910", "1920", "1930", 
@@ -56,40 +59,31 @@ table(gfx_data$Year)
 
 year_counts <- as.data.frame(table(gfx_data$Year), stringsAsFactors = FALSE)
 colnames(year_counts) <- c("Year", "Count")
-@
+```
 
-Histogram of number of dams by time period.
+### Histogram of number of dams by time period
 
-<<>>=
+```{r }
 gfx_bar <- ggplot(year_counts, aes(x = Year, y = Count))
 gfx_bar <- gfx_bar + geom_bar(position = "dodge", stat = "identity")
 gfx_bar <- gfx_bar + ylab("Number of Dams") + xlab("Year of Completion")
 gfx_bar <- gfx_bar + ggtitle("Number of Dams in the NID Database")
-@
+```
 
-<<label=fig1plot,include=FALSE>>=
+```{r fig1plot, echo=FALSE, fig.width=8, fig.height=6,fig.align="center"}
 plot(gfx_bar)
-@
-\begin{figure}
-\begin{center}
-<<label = fig1, width=8, height=6, fig = TRUE, echo = FALSE>>=
-<<fig1plot>>
-@
-\end{center}
-\caption{Number of Dams by Year of Completion}
-\label{fig:one}
-\end{figure}
+```
 
-Counts of dams per state in the US mainland.
+### Counts of dams per state in the US mainland
 
-<<>>=
+```{r }
 gfx_data <- subset(gfx_data, !(State %in% c("AK", "HI", "PR", "GU")))
 sort(table(gfx_data$State))
-@
+```
 
-Map of dams per state in the US mainland.
+### Map of dams per state in the US mainland
 
-<<>>=
+```{r }
 state_counts <- as.data.frame(table(gfx_data$State), stringsAsFactors = FALSE)
 colnames(state_counts) <- c("state", "Count")
 
@@ -125,30 +119,19 @@ gfx_map <- gfx_map + labs(list(title = "Number of Dams in the NID Database",
 gfx_map <- gfx_map + guides(fill = guide_legend(title = "Number of Dams"))
 gfx_map <- gfx_map + scale_fill_brewer(palette = "Accent")
 gfx_map <- gfx_map + coord_map()
-@
+```
 
-<<label=fig2plot,include=FALSE>>=
+```{r fig2plot, echo=FALSE, fig.height=6,fig.width=8}
 plot(gfx_map)
-@
-\begin{figure}
-\begin{center}
-<<label = fig2, width=8, height=6, fig = TRUE, echo = FALSE>>=
-<<fig2plot>>
-@
-\end{center}
-\caption{Number of Dams by State}
-\label{fig:two}
-\end{figure}
+```
 
-\section{Other Analyses: Flood Control Dams}
+## Other Analyses: Flood Control Dams
 
 A number of interesting analyses could be performed with the dataset. Of interest to water resources managers and hydrologists is the location of flood control dams. It is interesting to see a few states like Texas have a large number of flood control dams.
 
-<<>>=
+```{r }
 flood_dams <- subset(dams_all, Primary_Purpose == "Flood Control")
 
 table(flood_dams$State)
-@
-
-\end{document}
+```
 

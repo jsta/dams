@@ -24,7 +24,9 @@ Suggests:
     ggplot2,
     maps,
     mapproj,
-    testthat
+    testthat,
+    knitr,
+    rmarkdown
 License: GPL (>= 2)
 LazyData: true
 Collate:
@@ -37,3 +39,4 @@ NeedsCompilation: no
 Repository: CRAN
 Date/Publication: 2014-05-05 08:29:15
 RoxygenNote: 5.0.1
+VignetteBuilder: knitr

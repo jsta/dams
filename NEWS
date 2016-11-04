@@ -1,8 +1,0 @@
-Version 0.1
------------
-
-* Data from NID was downloaded in March 2014.
-
-* NID's website claims to have more than 80,000 dams; however, only 74,000 dams could be obtained from the website's UI.
-
-* Package comes with sample data; entire dataset available on bitbucket.org/rationshop

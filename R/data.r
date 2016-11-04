@@ -13,7 +13,6 @@
 #'  \item Dam_Name - The official name of the dam
 #'  \item Other_Dam_Name - Names other than the official name (i.e., 
 #'  reservoir name) of the dam in common use
-#'  \item State_ID - The Official State or Agency identification number
 #'  \item NID_ID - The official NID identification number, known formerly as 
 #'  the National ID
 #'  \item Num_Separate_Struct - Number of separate structures 
@@ -23,9 +22,7 @@
 #'  \item Latitude - Latitude at dam centerline, in decimal degrees, NAD83
 #'  \item Section - The information is in any form that is understandable and 
 #'  that clearly designates the individual values, i.e. S21, 73N, R69W
-#'  \item County - The name of the county in which the dam is located
 #'  \item River - The River or Stream designation
-#'  \item Owner_Name - Name(s) of the dam owner
 #'  \item Owner_Type - Code to indicate the type of owner
 #'  \item Private_Dam - Y or N indicating whether or not the dam is privately 
 #'  owned or not
@@ -121,7 +118,7 @@
 #' @docType data
 #' @name nid_cleaned
 #' @usage data(nid_cleaned)
-#' @format Data frame with 64 columns and 100 rows
+#' @format Data frame with 61 columns and 100 rows
 #' @keywords datasets
 NULL
 

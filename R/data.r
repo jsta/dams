@@ -129,7 +129,6 @@ NULL
 #' dams package provides sample cleaned data from the NID and provides 
 #' functionality to access the entire cleaned NID data.
 #'
-#' @import RCurl
 #' @docType package
 #' @name dams
 NULL

@@ -2,6 +2,7 @@
 #'
 #' @export
 #' @importFrom utils data read.csv
+#' @importFrom RCurl url.exists getURL
 #' @examples
 #' 
 #' # entire NID data, all the 74000+ records from bitbucket.org/rationshop
@@ -20,7 +21,7 @@ get_nid <- function() {
     nid_cleaned <- NULL
     
     nid_url <- "https://bitbucket.org/rationshop/packages/raw/master/nid_cleaned.txt"
-    if(url.exists(nid_url, ssl.verifypeer = FALSE)) {
+    if(RCurl::url.exists(nid_url, ssl.verifypeer = FALSE)) {
       message("downloading data from bitbucket. might take a few moments...")
       nid_data <- RCurl::getURL(nid_url, ssl.verifypeer = FALSE)    
       nid_cleaned <- read.csv(text = nid_data, header = TRUE, quote = "", as.is = TRUE, sep = "\t")

@@ -165,9 +165,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h3>Counts of number of dams built per decade or other time period of interest</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gfx_data$Year &lt;-<span class="st"> </span><span class="kw">cut</span>(gfx_data$Year_Completed, 
                      <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1850</span>, <span class="kw">seq</span>(<span class="dv">1900</span>, <span class="dv">2000</span>, <span class="dv">10</span>), <span class="dv">2014</span>), 
-                     <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;&lt;1850&quot;</span>, <span class="st">&quot;1850-1900&quot;</span>, <span class="st">&quot;1910&quot;</span>, <span class="st">&quot;1920&quot;</span>, <span class="st">&quot;1930&quot;</span>, 
-                                <span class="st">&quot;1940&quot;</span>, <span class="st">&quot;1950&quot;</span>, <span class="st">&quot;1960&quot;</span>, <span class="st">&quot;1970&quot;</span>, <span class="st">&quot;1980&quot;</span>, <span class="st">&quot;1990&quot;</span>, 
-                                <span class="st">&quot;2000&quot;</span>, <span class="st">&quot;2014&quot;</span>))
+                     <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;&lt;1850&quot;</span>, <span class="st">&quot;1850-1900&quot;</span>, <span class="st">&quot;1910&quot;</span>, <span class="st">&quot;1920&quot;</span>, <span class="st">&quot;1930&quot;</span>,
+                              <span class="st">&quot;1940&quot;</span>, <span class="st">&quot;1950&quot;</span>, <span class="st">&quot;1960&quot;</span>, <span class="st">&quot;1970&quot;</span>, <span class="st">&quot;1980&quot;</span>, <span class="st">&quot;1990&quot;</span>, 
+                              <span class="st">&quot;2000&quot;</span>, <span class="st">&quot;2014&quot;</span>))
 <span class="kw">table</span>(gfx_data$Year)</code></pre></div>
 <pre><code>## 
 ##     &lt;1850 1850-1900      1910      1920      1930      1940      1950 
@@ -221,18 +221,19 @@ gfx_data &lt;-<span class="st"> </span>gfx_data[<span class="kw">order</span>(gf
 
 <span class="co"># discretize state counts</span>
 color_breaks &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">500</span>, <span class="dv">1000</span>, <span class="dv">2000</span>, <span class="dv">3000</span>, <span class="dv">4000</span>, <span class="dv">5000</span>, <span class="dv">7500</span>)
-color_labels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;&lt;100&quot;</span>, <span class="st">&quot;100 - 500&quot;</span>, <span class="st">&quot;500 - 1000&quot;</span>, <span class="st">&quot;1000 - 2000&quot;</span>, <span class="st">&quot;2000 - 3000&quot;</span>, 
-                  <span class="st">&quot;3000 - 4000&quot;</span>, <span class="st">&quot;4000 - 5000&quot;</span>, <span class="st">&quot;5000 - 7500&quot;</span>)
+color_labels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;&lt;100&quot;</span>, <span class="st">&quot;100 - 500&quot;</span>, <span class="st">&quot;500 - 1000&quot;</span>, <span class="st">&quot;1000 - 2000&quot;</span>,
+                  <span class="st">&quot;2000 - 3000&quot;</span>, <span class="st">&quot;3000 - 4000&quot;</span>, <span class="st">&quot;4000 - 5000&quot;</span>, <span class="st">&quot;5000 - 7500&quot;</span>)
 gfx_data$dams &lt;-<span class="st"> </span><span class="kw">cut</span>(gfx_data$Count, 
                      <span class="dt">breaks =</span> color_breaks, 
                      <span class="dt">labels =</span> color_labels)
 
 gfx_map &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> gfx_data)
-gfx_map &lt;-<span class="st"> </span>gfx_map +<span class="st"> </span><span class="kw">geom_polygon</span>(<span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">group =</span> group, <span class="dt">fill =</span> dams))
-gfx_map &lt;-<span class="st"> </span>gfx_map +<span class="st"> </span><span class="kw">geom_path</span>(<span class="dt">data =</span> geo_state, <span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">group =</span> group, 
-                                                     <span class="dt">fill =</span> <span class="ot">NA</span>))
-gfx_map &lt;-<span class="st"> </span>gfx_map +<span class="st"> </span><span class="kw">labs</span>(<span class="kw">list</span>(<span class="dt">title =</span> <span class="st">&quot;Number of Dams in the NID Database&quot;</span>, 
-                               <span class="dt">x =</span> <span class="ot">NULL</span>, <span class="dt">y =</span> <span class="ot">NULL</span>))
+gfx_map &lt;-<span class="st"> </span>gfx_map +<span class="st"> </span><span class="kw">geom_polygon</span>(<span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">group =</span> group,
+            <span class="dt">fill =</span> dams))
+gfx_map &lt;-<span class="st"> </span>gfx_map +<span class="st"> </span><span class="kw">geom_path</span>(<span class="dt">data =</span> geo_state, <span class="kw">aes</span>(<span class="dt">x =</span> long, <span class="dt">y =</span> lat,
+            <span class="dt">group =</span> group, <span class="dt">fill =</span> <span class="ot">NA</span>))
+gfx_map &lt;-<span class="st"> </span>gfx_map +<span class="st"> </span><span class="kw">labs</span>(<span class="kw">list</span>(<span class="dt">title =</span> <span class="st">&quot;Number of Dams in the NID Database&quot;</span>,
+            <span class="dt">x =</span> <span class="ot">NULL</span>, <span class="dt">y =</span> <span class="ot">NULL</span>))
 gfx_map &lt;-<span class="st"> </span>gfx_map +<span class="st"> </span><span class="kw">guides</span>(<span class="dt">fill =</span> <span class="kw">guide_legend</span>(<span class="dt">title =</span> <span class="st">&quot;Number of Dams&quot;</span>))
 gfx_map &lt;-<span class="st"> </span>gfx_map +<span class="st"> </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Accent&quot;</span>)
 gfx_map &lt;-<span class="st"> </span>gfx_map +<span class="st"> </span><span class="kw">coord_map</span>()</code></pre></div>

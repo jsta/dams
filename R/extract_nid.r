@@ -24,7 +24,8 @@ get_nid <- function() {
     if(RCurl::url.exists(nid_url, ssl.verifypeer = FALSE)) {
       message("downloading data from bitbucket. might take a few moments...")
       nid_data <- RCurl::getURL(nid_url, ssl.verifypeer = FALSE)    
-      nid_cleaned <- read.csv(text = nid_data, header = TRUE, quote = "", as.is = TRUE, sep = "\t")
+      nid_cleaned <- read.csv(text = nid_data, header = TRUE, quote = "",
+                      as.is = TRUE, sep = "\t")
     } else {
       stop("URL for the complete NID data does not exist!")
     }

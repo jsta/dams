@@ -19,9 +19,9 @@ head(gfx_data)
 ## ------------------------------------------------------------------------
 gfx_data$Year <- cut(gfx_data$Year_Completed, 
                      breaks = c(0, 1850, seq(1900, 2000, 10), 2014), 
-                     labels = c("<1850", "1850-1900", "1910", "1920", "1930", 
-                                "1940", "1950", "1960", "1970", "1980", "1990", 
-                                "2000", "2014"))
+                     labels = c("<1850", "1850-1900", "1910", "1920", "1930",
+                              "1940", "1950", "1960", "1970", "1980", "1990", 
+                              "2000", "2014"))
 table(gfx_data$Year)
 
 year_counts <- as.data.frame(table(gfx_data$Year), stringsAsFactors = FALSE)
@@ -61,18 +61,19 @@ gfx_data <- gfx_data[order(gfx_data$order), ]
 
 # discretize state counts
 color_breaks <- c(0, 100, 500, 1000, 2000, 3000, 4000, 5000, 7500)
-color_labels <- c("<100", "100 - 500", "500 - 1000", "1000 - 2000", "2000 - 3000", 
-                  "3000 - 4000", "4000 - 5000", "5000 - 7500")
+color_labels <- c("<100", "100 - 500", "500 - 1000", "1000 - 2000",
+                  "2000 - 3000", "3000 - 4000", "4000 - 5000", "5000 - 7500")
 gfx_data$dams <- cut(gfx_data$Count, 
                      breaks = color_breaks, 
                      labels = color_labels)
 
 gfx_map <- ggplot(data = gfx_data)
-gfx_map <- gfx_map + geom_polygon(aes(x = long, y = lat, group = group, fill = dams))
-gfx_map <- gfx_map + geom_path(data = geo_state, aes(x = long, y = lat, group = group, 
-                                                     fill = NA))
-gfx_map <- gfx_map + labs(list(title = "Number of Dams in the NID Database", 
-                               x = NULL, y = NULL))
+gfx_map <- gfx_map + geom_polygon(aes(x = long, y = lat, group = group,
+            fill = dams))
+gfx_map <- gfx_map + geom_path(data = geo_state, aes(x = long, y = lat,
+            group = group, fill = NA))
+gfx_map <- gfx_map + labs(list(title = "Number of Dams in the NID Database",
+            x = NULL, y = NULL))
 gfx_map <- gfx_map + guides(fill = guide_legend(title = "Number of Dams"))
 gfx_map <- gfx_map + scale_fill_brewer(palette = "Accent")
 gfx_map <- gfx_map + coord_map()

@@ -15,8 +15,8 @@ get_nid <- function() {
     # get complete data from bitbucket
     # code based on three tips - 
     # RCurl example on https
-    # http://stackoverflow.com/questions/19890633/r-produces-unsupported-url-scheme-error-when-getting-data-from-https-sites
-    # https://answers.atlassian.com/questions/122394/url-to-bitbucket-raw-file-without-commits
+    # <http://stackoverflow.com/questions/19890633/r-produces-unsupported-url-scheme-error-when-getting-data-from-https-sites>
+    # <https://answers.atlassian.com/questions/122394/url-to-bitbucket-raw-file-without-commits>
 
     nid_cleaned <- NULL
     

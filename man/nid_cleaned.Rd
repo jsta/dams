@@ -121,7 +121,7 @@ Variables:
 }
 \references{
 NID: The National Inventory of Dams from the United States 
-Army Corps of Engineers, http://nid.usace.army.mil, data extracted from 
+Army Corps of Engineers, <http://nid.usace.army.mil>, data extracted from 
 NID's website in March 2014.
 }
 \keyword{datasets}

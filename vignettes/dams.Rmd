@@ -1,8 +1,6 @@
 ---
 title: "Dams Package Demo"
-author:
-- "Gopi Goteti"
-- "Joseph Stachelek"
+author: "Gopi Goteti and Joseph Stachelek"
 date: "`r Sys.Date()`"
 fig_caption: true
 output: rmarkdown::html_vignette

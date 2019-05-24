@@ -19,7 +19,9 @@ Authors@R: c(
 URL: https://github.com/jsta/dams
 BugReports: http://www.github.com/jsta/dams/issues
 Imports:
-    RCurl
+    crul,
+    fauxpas,
+    httr
 Suggests:
     ggplot2,
     maps,

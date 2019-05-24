@@ -1,0 +1,15 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+vignettes/dams-fig1.pdf
+vignettes/dams-fig2.pdf
+vignettes/dams-aux
+vignettes/dams.aux
+vignettes/dams.log
+vignettes/dams.pdf
+vignettes/dams.tex
+vignettes/dams-concordance.tex
+vignettes/Rplots.pdf
+inst/doc
+*.csv

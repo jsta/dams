@@ -1,0 +1,16 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^README\.Rmd$
+^README-.*\.png$
+Makefile
+^Makefile$
+^vignettes/dams-concordance\.tex$
+^vignettes/dams-fig1\.pdf$
+^vignettes/dams-fig2\.pdf$
+scrape.R
+^.*.csv
+^.*.txt
+selenium_ide_recording.html
+^docs$
+compile_scraped.R
+^\.travis\.yml$

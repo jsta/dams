@@ -11,4 +11,3 @@ Subsequently, the raw data was checked for potential errors and cleaned.
 dams package provides sample cleaned data from the NID and provides 
 functionality to access the entire cleaned NID data.
 }
-

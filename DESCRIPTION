@@ -29,14 +29,9 @@ Suggests:
     rmarkdown
 License: GPL (>= 2)
 LazyData: true
-Collate:
-    'data.r'
-    'extract_nid.r'
-Packaged: 2014-05-05 05:53:24 UTC; ggoteti
 Depends:
     R (>= 2.10)
 NeedsCompilation: no
-Repository: CRAN
-Date/Publication: 2014-05-05 08:29:15
-RoxygenNote: 5.0.1
+RoxygenNote: 6.1.1
 VignetteBuilder: knitr
+Encoding: UTF-8

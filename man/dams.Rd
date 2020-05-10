@@ -3,7 +3,6 @@
 \docType{package}
 \name{dams}
 \alias{dams}
-\alias{dams-package}
 \title{Dams in the United States from the National Inventory of Dams (NID).}
 \description{
 Data from NID was extracted manually from <http://nid.usace.army.mil>. 

@@ -14,3 +14,4 @@ selenium_ide_recording.html
 ^docs$
 compile_scraped.R
 ^\.travis\.yml$
+^data-raw$

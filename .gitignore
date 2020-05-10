@@ -13,3 +13,5 @@ vignettes/dams-concordance.tex
 vignettes/Rplots.pdf
 inst/doc
 *.csv
+old
+data-raw/NID2019_U.xlsx

@@ -40,7 +40,7 @@ head(dams_all, 3)
 ### Data for graphics
 
 ```{r }
-gfx_data <- dams_all[, c("Year_Completed", "State")]
+gfx_data <- dams_all[, c("year_completed", "state")]
 
 head(gfx_data)
 ```
@@ -48,14 +48,14 @@ head(gfx_data)
 ### Counts of number of dams built per decade or other time period of interest
 
 ```{r }
-gfx_data$Year <- cut(gfx_data$Year_Completed, 
+gfx_data$year <- cut(gfx_data$year_completed, 
                      breaks = c(0, 1850, seq(1900, 2000, 10), 2014), 
                      labels = c("<1850", "1850-1900", "1910", "1920", "1930",
                               "1940", "1950", "1960", "1970", "1980", "1990", 
                               "2000", "2014"))
-table(gfx_data$Year)
+table(gfx_data$year)
 
-year_counts <- as.data.frame(table(gfx_data$Year), stringsAsFactors = FALSE)
+year_counts <- as.data.frame(table(gfx_data$year), stringsAsFactors = FALSE)
 colnames(year_counts) <- c("Year", "Count")
 ```
 
@@ -75,14 +75,14 @@ plot(gfx_bar)
 ### Counts of dams per state in the US mainland
 
 ```{r }
-gfx_data <- subset(gfx_data, !(State %in% c("AK", "HI", "PR", "GU")))
-sort(table(gfx_data$State))
+gfx_data <- subset(gfx_data, !(state %in% c("AK", "HI", "PR", "GU")))
+sort(table(gfx_data$state))
 ```
 
 ### Map of dams per state in the US mainland
 
 ```{r }
-state_counts <- as.data.frame(table(gfx_data$State), stringsAsFactors = FALSE)
+state_counts <- as.data.frame(table(gfx_data$state), stringsAsFactors = FALSE)
 colnames(state_counts) <- c("state", "Count")
 
 # add long names of states
@@ -129,8 +129,7 @@ plot(gfx_map)
 A number of interesting analyses could be performed with the dataset. Of interest to water resources managers and hydrologists is the location of flood control dams. It is interesting to see a few states like Texas have a large number of flood control dams.
 
 ```{r }
-flood_dams <- subset(dams_all, Primary_Purpose == "Flood Control")
+flood_dams <- subset(dams_all, length(grep("C", purposes)) > 0)
 
-table(flood_dams$State)
+table(flood_dams$state)
 ```
-

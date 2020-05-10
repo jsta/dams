@@ -1,38 +1,42 @@
-#' Retrieve desired data on dams from pre-processed NID data
+#' Retrieve raw data on dams from the official NID site
 #'
+#' @param dest destination file path
+#' @param overwrite logical. overwrite.
+#' 
 #' @export
-#' @importFrom utils data read.csv
 #' @importFrom crul ok
 #' @importFrom fauxpas http200
-#' @importFrom httr content GET
+#' @importFrom janitor clean_names
+#' @importFrom readxl read_excel
+#' @importFrom utils download.file
 #' @examples
 #' 
-#' # entire NID data, all the 74000+ records from bitbucket.org/rationshop
+#' # entire NID data, all the 74000+ records from <http://nid.usace.army.mil/>
 #' \dontrun{
 #' dams_all <- get_nid()
 #' }
 #'
-get_nid <- function() {
+get_nid <- function(dest = "NID2019_U.xlsx", overwrite = FALSE){
   
-    # get complete data from bitbucket
-    # code based on three tips - 
-    # RCurl example on https
-    # <http://stackoverflow.com/questions/19890633/r-produces-unsupported-url-scheme-error-when-getting-data-from-https-sites>
-    # <https://answers.atlassian.com/questions/122394/url-to-bitbucket-raw-file-without-commits>
-
+  if(!file.exists("data-raw/NID2019_U.xlsx")){
+    download.file("https://nid.sec.usace.army.mil/ords/NID_R.DOWNLOADFILE?InFileName=NID2019_U.xlsx", 
+                  "data-raw/NID2019_U.xlsx")
+  }
+  
     nid_cleaned <- NULL
+    nid_url     <- "https://nid.sec.usace.army.mil/ords/NID_R.DOWNLOADFILE?InFileName=NID2019_U.xlsx"
     
-    nid_url <- "https://bitbucket.org/rationshop/packages/raw/master/nid_cleaned.txt"
-    
-    if(crul::ok(nid_url)) {
-      message("downloading data from bitbucket. might take a few moments...")
-      nid_data <- httr::content(httr::GET(nid_url), as = "text")
-      nid_cleaned <- read.csv(text = nid_data, header = TRUE, quote = "",
-                      as.is = TRUE, sep = "\t")
-    } else {
+    if(crul::ok(nid_url)){
+      if(!file.exists(dest) | overwrite){
+      message("downloading data. might take a few moments...")
+        download.file(nid_url, dest)
+      }
+    }else{
       stop("URL for the complete NID data does not exist!")
     }
     
-    return (nid_cleaned)
+    nid_raw <- readxl::read_excel(dest)
+    nid_raw <- janitor::clean_names(nid_raw)
     
+    return(nid_raw)
 }

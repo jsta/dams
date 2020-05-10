@@ -21,7 +21,8 @@ BugReports: http://www.github.com/jsta/dams/issues
 Imports:
     crul,
     fauxpas,
-    httr
+    janitor,
+    readxl
 Suggests:
     ggplot2,
     maps,

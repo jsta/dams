@@ -2,16 +2,21 @@
 % Please edit documentation in R/get_nid.R
 \name{get_nid}
 \alias{get_nid}
-\title{Retrieve desired data on dams from pre-processed NID data}
+\title{Retrieve raw data on dams from the official NID site}
 \usage{
-get_nid()
+get_nid(dest = "NID2019_U.xlsx", overwrite = FALSE)
+}
+\arguments{
+\item{dest}{destination file path}
+
+\item{overwrite}{logical. overwrite.}
 }
 \description{
-Retrieve desired data on dams from pre-processed NID data
+Retrieve raw data on dams from the official NID site
 }
 \examples{
 
-# entire NID data, all the 74000+ records from bitbucket.org/rationshop
+# entire NID data, all the 74000+ records from <http://nid.usace.army.mil/>
 \dontrun{
 dams_all <- get_nid()
 }

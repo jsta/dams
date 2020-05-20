@@ -1,5 +1,5 @@
 context("dams")
 
 test_that("dams works", {
-  expect_equal(ncol(nid_cleaned), 32)
+  expect_equal(ncol(nid_subset), 32)
 })

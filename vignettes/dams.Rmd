@@ -28,11 +28,9 @@ require(mapproj)
 Load the entire dataset. This might take a few moments.
 
 ```{r }
-dams_all <- nid_cleaned
+dim(nid_subset)
 
-dim(dams_all)
-
-head(dams_all, 3)
+head(nid_subset, 3)
 ```
 
 ## Summary Graphics
@@ -40,7 +38,7 @@ head(dams_all, 3)
 ### Data for graphics
 
 ```{r }
-gfx_data <- dams_all[, c("year_completed", "state")]
+gfx_data <- nid_subset[, c("year_completed", "state")]
 
 head(gfx_data)
 ```
@@ -129,7 +127,7 @@ plot(gfx_map)
 A number of interesting analyses could be performed with the dataset. Of interest to water resources managers and hydrologists is the location of flood control dams. It is interesting to see a few states like Texas have a large number of flood control dams.
 
 ```{r }
-flood_dams <- subset(dams_all, length(grep("C", purposes)) > 0)
+flood_dams <- subset(nid_subset, length(grep("C", purposes)) > 0)
 
 table(flood_dams$state)
 ```

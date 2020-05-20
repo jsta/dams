@@ -16,8 +16,8 @@ nid_cleaned   <- nid_raw %>%
 # only include cols with less than 5 percent missing
 complete_cols <- apply(nid_cleaned, 2, function(x) sum(is.na(x)))
 complete_cols <- c(names(complete_cols[complete_cols < 5000]), "year_completed")
-nid_cleaned   <- nid_cleaned[,names(nid_cleaned) %in% complete_cols]
+nid_subset   <- nid_cleaned[,names(nid_cleaned) %in% complete_cols]
 
-use_data(nid_cleaned, compress = "xz", overwrite = TRUE)
+use_data(nid_subset, compress = "xz", overwrite = TRUE)
 
-# system("fsizemb data/nid_cleaned.rda")
+# system("fsizemb data/nid_subset.rda")

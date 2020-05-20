@@ -1,3 +1,14 @@
+dams 0.3
+===============
+
+### NEW FEATURES
+
+* The raw NID data can now be pulled directly from the USACE rather than via a third party.
+
+### MINOR IMPROVEMENTS
+
+* `nid_clean` has been replaced by `nid_subset` and the process for deriving this subset is now fully documented (#1, #2).
+
 dams 0.2
 ===============
 
@@ -23,6 +34,3 @@ dams 0.1
 * NID's website claims to have more than 80,000 dams; however, only 74,000 dams could be obtained from the website's UI.
 
 * Package comes with sample data; entire dataset available on bitbucket.org/rationshop
-
-
-

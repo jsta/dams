@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_nid.R
 \name{get_nid}
 \alias{get_nid}
-\title{Retrieve raw data on dams from the official NID site}
+\title{Retrieve \link{nid_all} from the official NID site}
 \usage{
 get_nid(dest = "NID2019_U.xlsx", overwrite = FALSE)
 }
@@ -11,12 +11,13 @@ get_nid(dest = "NID2019_U.xlsx", overwrite = FALSE)
 
 \item{overwrite}{logical. overwrite.}
 }
+\value{
+\link{nid_all} entire NID data, all the 74000+ records from \url{http://nid.usace.army.mil/}
+}
 \description{
-Retrieve raw data on dams from the official NID site
+Retrieve \link{nid_all} from the official NID site
 }
 \examples{
-
-# entire NID data, all the 74000+ records from <http://nid.usace.army.mil/>
 \dontrun{
 dams_all <- get_nid()
 }

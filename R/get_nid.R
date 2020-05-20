@@ -1,4 +1,4 @@
-#' Retrieve raw data on dams from the official NID site
+#' Retrieve [nid_all] from the official NID site
 #'
 #' @param dest destination file path
 #' @param overwrite logical. overwrite.
@@ -9,16 +9,17 @@
 #' @importFrom janitor clean_names
 #' @importFrom readxl read_excel
 #' @importFrom utils download.file
-#' @examples
 #' 
-#' # entire NID data, all the 74000+ records from <http://nid.usace.army.mil/>
+#' @return [nid_all] entire NID data, all the 74000+ records from <http://nid.usace.army.mil/>
+#' 
+#' @examples
 #' \dontrun{
 #' dams_all <- get_nid()
 #' }
 #'
 get_nid <- function(dest = "NID2019_U.xlsx", overwrite = FALSE){
   
-  if(!file.exists("data-raw/NID2019_U.xlsx")){
+  if (!file.exists("data-raw/NID2019_U.xlsx")) {
     download.file("https://nid.sec.usace.army.mil/ords/NID_R.DOWNLOADFILE?InFileName=NID2019_U.xlsx", 
                   "data-raw/NID2019_U.xlsx")
   }
@@ -26,8 +27,8 @@ get_nid <- function(dest = "NID2019_U.xlsx", overwrite = FALSE){
     nid_cleaned <- NULL
     nid_url     <- "https://nid.sec.usace.army.mil/ords/NID_R.DOWNLOADFILE?InFileName=NID2019_U.xlsx"
     
-    if(crul::ok(nid_url)){
-      if(!file.exists(dest) | overwrite){
+    if (crul::ok(nid_url)) {
+      if (!file.exists(dest) | overwrite) {
       message("downloading data. might take a few moments...")
         download.file(nid_url, dest)
       }

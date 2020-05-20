@@ -16,3 +16,4 @@ compile_scraped.R
 ^\.travis\.yml$
 ^data-raw$
 ^cran-comments\.md$
+^CRAN-RELEASE$

@@ -1,4 +1,4 @@
-dams 0.3
+dams 0.3.0
 ===============
 
 ### NEW FEATURES

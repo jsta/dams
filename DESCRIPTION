@@ -11,7 +11,7 @@ Description: The single largest source of dams in the United States is the
     data was checked for potential errors and cleaned. This package provides
     sample cleaned data from the NID and provides functionality to access the
     entire cleaned NID data.
-Version: 0.3
+Version: 0.3.0
 Authors@R: c(
     person("Gopi", "Goteti", role = c("aut")),
     person("Joseph", "Stachelek", role = c("aut", "cre"), email = "stachel2@msu.edu")

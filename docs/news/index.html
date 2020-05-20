@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dams</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -117,20 +117,40 @@
       <small>Source: <a href='https://github.com/jsta/dams/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="dams-02" class="section level1">
-<h1 class="page-header" data-toc-text="0.2">
-<a href="#dams-02" class="anchor"></a>dams 0.2<small> 2016-11-05 </small>
+    <div id="dams-030" class="section level1">
+<h1 class="page-header" data-toc-text="0.3.0">
+<a href="#dams-030" class="anchor"></a>dams 0.3.0<small> Unreleased </small>
 </h1>
 <div id="new-features" class="section level3">
 <h3 class="hasAnchor">
 <a href="#new-features" class="anchor"></a>NEW FEATURES</h3>
 <ul>
-<li>External data was compressed, columns removed to fit under CRAN size limits, moved inside package</li>
+<li>The raw NID data can now be pulled directly from the USACE rather than via a third party.</li>
 </ul>
 </div>
 <div id="minor-improvements" class="section level3">
 <h3 class="hasAnchor">
 <a href="#minor-improvements" class="anchor"></a>MINOR IMPROVEMENTS</h3>
+<ul>
+<li>
+<code>nid_clean</code> has been replaced by <code>nid_subset</code> and the process for deriving this subset is now fully documented (<a href='https://github.com/jsta/dams/issues/1'>#1</a>, <a href='https://github.com/jsta/dams/issues/2'>#2</a>).</li>
+</ul>
+</div>
+</div>
+    <div id="dams-02" class="section level1">
+<h1 class="page-header" data-toc-text="0.2">
+<a href="#dams-02" class="anchor"></a>dams 0.2<small> 2016-11-05 </small>
+</h1>
+<div id="new-features-1" class="section level3">
+<h3 class="hasAnchor">
+<a href="#new-features-1" class="anchor"></a>NEW FEATURES</h3>
+<ul>
+<li>External data was compressed, columns removed to fit under CRAN size limits, moved inside package</li>
+</ul>
+</div>
+<div id="minor-improvements-1" class="section level3">
+<h3 class="hasAnchor">
+<a href="#minor-improvements-1" class="anchor"></a>MINOR IMPROVEMENTS</h3>
 <ul>
 <li><p>Converted vignette to Rmd</p></li>
 <li><p>Remade docs with roxygen2</p></li>

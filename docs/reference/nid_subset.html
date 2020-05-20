@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Retrieve raw data on dams from the official NID site — get_nid • dams</title>
+<title>Subset of dams information from the NID database — nid_subset • dams</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Retrieve raw data on dams from the official NID site — get_nid" />
-<meta property="og:description" content="Retrieve raw data on dams from the official NID site" />
+<meta property="og:title" content="Subset of dams information from the NID database — nid_subset" />
+<meta property="og:description" content="Reduced subset of the the NID data excluding fields with more than 5 percent missing data. See the nid_all documentation for a description of each field." />
 
 
 
@@ -114,38 +114,25 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Retrieve raw data on dams from the official NID site</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jsta/dams/blob/master/R/get_nid.R'><code>R/get_nid.R</code></a></small>
-    <div class="hidden name"><code>get_nid.Rd</code></div>
+    <h1>Subset of dams information from the NID database</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jsta/dams/blob/master/R/dams-package.R'><code>R/dams-package.R</code></a></small>
+    <div class="hidden name"><code>nid_subset.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Retrieve raw data on dams from the official NID site</p>
+    <p>Reduced subset of the the NID data excluding fields with more than 5 percent missing data. See the <a href='nid_all.html'>nid_all</a> documentation for a description of each field.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_nid</span>(<span class='kw'>dest</span> <span class='kw'>=</span> <span class='st'>"NID2019_U.xlsx"</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>nid_subset</span>)</pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>dest</th>
-      <td><p>destination file path</p></td>
-    </tr>
-    <tr>
-      <th>overwrite</th>
-      <td><p>logical. overwrite.</p></td>
-    </tr>
-    </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p><a href='nid_all.html'>nid_all</a> entire NID data, all the 74000+ records from <a href='http://nid.usace.army.mil/'>http://nid.usace.army.mil/</a></p>
+    <p>Data frame with 32 columns and 91457 rows</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='no'>dams_all</span> <span class='kw'>&lt;-</span> <span class='fu'>get_nid</span>()
-}</div></pre>
+    <div class='dont-index'><p><a href='nid_all.html'>nid_all</a> for a description of each field.</p></div>
+
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

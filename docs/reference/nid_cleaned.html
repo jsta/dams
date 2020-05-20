@@ -6,23 +6,31 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Dams from the NID database — nid_cleaned • dams</title>
+<title>Subset of dams information from the NID database — nid_cleaned • dams</title>
+
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -30,14 +38,10 @@
 
 
 
-<meta property="og:title" content="Dams from the NID database — nid_cleaned" />
 
-<meta property="og:description" content="The data dictionary from NID provides details on the data attributes. 
-Below is only a short description of the attributes. Note that not all 
-the attributes specified in the data dictionary are available in the 
-data from NID. It appears that NID revised the data but not the 
-data dictionary." />
-<meta name="twitter:card" content="summary" />
+<meta property="og:title" content="Subset of dams information from the NID database — nid_cleaned" />
+<meta property="og:description" content="See the nid_raw documentation for details on data attributes." />
+
 
 
 
@@ -51,9 +55,10 @@ data dictionary." />
 <![endif]-->
 
 
+
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -67,7 +72,7 @@ data dictionary." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dams</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3</span>
       </span>
     </div>
 
@@ -75,7 +80,7 @@ data dictionary." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -89,11 +94,10 @@ data dictionary." />
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/jsta/dams">
-    <span class="fa fa-github fa-lg"></span>
+  <a href="https://github.com/jsta/dams/">
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -104,157 +108,39 @@ data dictionary." />
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Dams from the NID database</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jsta/dams/blob/master/R/data.r'><code>R/data.r</code></a></small>
+    <h1>Subset of dams information from the NID database</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jsta/dams/blob/master/R/dams-package.R'><code>R/dams-package.R</code></a></small>
     <div class="hidden name"><code>nid_cleaned.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    
-    <p>The data dictionary from NID provides details on the data attributes. 
-Below is only a short description of the attributes. Note that not all 
-the attributes specified in the data dictionary are available in the 
-data from NID. It appears that NID revised the data but not the 
-data dictionary.</p>
-    
+    <p>See the nid_raw documentation for details on data attributes.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>nid_cleaned</span>)</pre>
-        
+    <pre class="usage"><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='no'>nid_cleaned</span>)</pre>
+
+
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
     <p>Data frame with 61 columns and 100 rows</p>
-    
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>Variables:</p>
-<ul>
-<li><p>Dam_Name - The official name of the dam</p></li>
-<li><p>Other_Dam_Name - Names other than the official name (i.e., 
- reservoir name) of the dam in common use</p></li>
-<li><p>NID_ID - The official NID identification number, known formerly as 
- the National ID</p></li>
-<li><p>Num_Separate_Struct - Number of separate structures</p></li>
-<li><p>Other_Structure_ID - The identification number (S001, S002, etc.) 
- for the saddle dam or dike associated with the larger dam project</p></li>
-<li><p>Longitude - Longitude at dam centerline, in decimal degrees, NAD83</p></li>
-<li><p>Latitude - Latitude at dam centerline, in decimal degrees, NAD83</p></li>
-<li><p>Section - The information is in any form that is understandable and 
- that clearly designates the individual values, i.e. S21, 73N, R69W</p></li>
-<li><p>River - The River or Stream designation</p></li>
-<li><p>Owner_Type - Code to indicate the type of owner</p></li>
-<li><p>Private_Dam - Y or N indicating whether or not the dam is privately 
- owned or not</p></li>
-<li><p>Dam_Designer - Name of the principal firm(s) or agency accomplishing 
- design of dam and major appurtenant operating features</p></li>
-<li><p>Dam_Type - Codes to indicate the type of dam</p></li>
-<li><p>Core - Code to indicate the position, type of watertight member 
- and certainty</p></li>
-<li><p>Foundation - Code for the material upon which dam is founded, 
- and certainty</p></li>
-<li><p>Primary_Purpose - Code(s) to indicate the current purpose(s) 
- for which the reservoir is used</p></li>
-<li><p>All_Purposes - Code(s) to indicate the current purpose(s) 
- for which the reservoir is used</p></li>
-<li><p>Year_Completed - Year when the original main dam structure 
- was completed</p></li>
-<li><p>Year_Modified - Year when major modifications or rehabilitation 
- of dam or major control structures were completed</p></li>
-<li><p>Dam_Length - Length of the dam, in feet</p></li>
-<li><p>Dam_Height - Height of the dam, in feet</p></li>
-<li><p>Structural_Height - Structural height of the dam, in feet</p></li>
-<li><p>Hydraulic_Height - Hydraulic height of the dam, in feet</p></li>
-<li><p>NID_Height - Maximum value of dam height, structural height, 
- and hydraulic height. Accepted as the general height of the dam</p></li>
-<li><p>Max_Discharge - Maximum discharge, in cubic feet per second</p></li>
-<li><p>Max_Storage - Maximum storage, in acre-feet</p></li>
-<li><p>Normal_Storage - Normal storage, in acre-feet</p></li>
-<li><p>NID_Storage - Maximum value of normal storage and maximum storage. 
- Accepted as the general storage of the dam</p></li>
-<li><p>Surface_Area - Surface area, in acres</p></li>
-<li><p>Drainage_Area - Drainage area of the dam, in square miles</p></li>
-<li><p>EAP - Code indicating whether this dam has an Emergency Action 
- Plan (EAP) developed by the dam owner</p></li>
-<li><p>Inspection_Date - Date of the most recent inspection of the dam 
- prior to the transmittal of the data by the submitting agency</p></li>
-<li><p>Inspection_Frequency - The scheduled frequency interval for 
- periodic inspections, in years</p></li>
-<li><p>Spillway_Type - Code that describes the type of spillway</p></li>
-<li><p>Spillway_Width - The width of the spillway, in feet</p></li>
-<li><p>Outlet_Gates - Code(s) that describe the type of (1) spillway and 
- (2) controlled outlet gates</p></li>
-<li><p>Volume - Total number of cubic yards occupied by the materials 
- used in the dam structure</p></li>
-<li><p>Num_Locks - Number of existing navigation locks for the project</p></li>
-<li><p>Length_Locks - Length of the primary navigation lock, in feet</p></li>
-<li><p>Width_Locks - Width of the primary navigation lock, in feet</p></li>
-<li><p>Permitting_Authority - Yes if the state regulatory organization 
- has the authority to review</p></li>
-<li><p>Inspection_Authority - Yes if the state regulatory organization 
- has the authority to require or perform the inspection</p></li>
-<li><p>Enforcement_Authority - Yes if the state regulatory organization 
- has the authority to issue notices</p></li>
-<li><p>Jurisdictional_Dam - Yes if this dam meets the state regulatory 
- organization's definition of a jurisdictional dam</p></li>
-<li><p>State_Reg_Dam - Calculated field based on Permitting Authority, 
- Inspection Authority and Enforcement Authority</p></li>
-<li><p>State_Reg_Agency - Name of the primary state agency with regulatory 
- or approval authority over the dam</p></li>
-<li><p>Fed_Funding - Code identifying which federal agency was involved 
- in funding of the dam</p></li>
-<li><p>Fed_Design - Code identifying which federal agency was involved 
- in the design of the dam</p></li>
-<li><p>Fed_Construction - Code identifying which federal agency was 
- involved in the construction of the dam</p></li>
-<li><p>Fed_Regulatory - Code identifying which federal agency is involved 
- in the regulation of the dam</p></li>
-<li><p>Fed_Inspection - Code identifying which federal agency is involved 
- in the inspection of the dam</p></li>
-<li><p>Fed_Operation - Code identifying which federal agency is involved 
- in the operation of the dam</p></li>
-<li><p>Fed_Owner - Code identifying which federal agency partly or wholly 
- owns the dam</p></li>
-<li><p>Fed_Other - Code identifying which federal agency is involved in 
- other aspects of the dam</p></li>
-<li><p>Source_Agency - Primary state or federal agency responsible for data</p></li>
-<li><p>State - State where dam is located</p></li>
-<li><p>Submit_Date - Date data was submitted to the US Army Corps of 
- Engineers for inclusion to the National Inventory of Dams</p></li>
-<li><p>Url_Address - Web Site for more information on particular dam</p></li>
-<li><p>Congress_Rep - Name of congressional representative for the 
- congressional district where dam is located</p></li>
-<li><p>Political_Party - Name of political party associated with the 
- congressional representative for the congressional district 
- where dam is located</p></li>
-<li><p>Congress_District - Congressional District where dam is located</p></li>
-</ul>
-    
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
-
-    <p>NID: The National Inventory of Dams from the United States 
-Army Corps of Engineers, &lt;http://nid.usace.army.mil&gt;, data extracted from 
-NID's website in March 2014.</p>
-    
+    <div class='dont-index'><p>nid_raw</p></div>
 
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      
-      <li><a href="#format">Format</a></li>
-
-      <li><a href="#details">Details</a></li>
-
-      <li><a href="#references">References</a></li>
-          </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -262,13 +148,16 @@ NID's website in March 2014.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

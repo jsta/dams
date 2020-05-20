@@ -29,8 +29,13 @@ devtools::install_github("jsta/dams")
 
 ``` r
 library(dams)
-data(nid_cleaned)
+data(nid_subset)
 ```
+
+## Metadata
+
+See metadata [field
+descriptions](https://jsta.github.io/dams/reference/nid_all.html).
 
 ## References
 

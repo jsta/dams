@@ -39,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -56,7 +56,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/jsta/dams/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -70,13 +70,13 @@
 
       
 
-      </header><div class="row">
+      </header><script src="dams_files/header-attrs-2.9/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Dams Package Demo</h1>
-                        <h4 class="author">Gopi Goteti and Joseph Stachelek</h4>
+                        <h4 class="author">Gopi Goteti and Jemma Stachelek</h4>
             
-            <h4 class="date">2020-05-20</h4>
+            <h4 class="date">2021-08-03</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/jsta/dams/blob/master/vignettes/dams.Rmd"><code>vignettes/dams.Rmd</code></a></small>
       <div class="hidden name"><code>dams.Rmd</code></div>
@@ -90,17 +90,20 @@
 <h2 class="hasAnchor">
 <a href="#data-attributes" class="anchor"></a>Data Attributes</h2>
 <p>If you have not already done so, load the package along with ggplot and maps (for graphics).</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">require</a></span>(<span class="no">dams</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">require</a></span>(<span class="no">ggplot2</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">require</a></span>(<span class="no">maps</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">require</a></span>(<span class="no">mapproj</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jsta/dams">dams</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">maps</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">mapproj</span><span class="op">)</span></code></pre></div>
 <div id="load-data" class="section level3">
 <h3 class="hasAnchor">
 <a href="#load-data" class="anchor"></a>Load Data</h3>
 <p>Load the entire dataset. This might take a few moments.</p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span>(<span class="no">nid_subset</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">nid_subset</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 91457    32</code></pre>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">nid_subset</span>, <span class="fl">3</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">nid_subset</span>, <span class="fl">3</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 32
 ##   recordid dam_name nidid longitude latitude county owner_type dam_type purposes
 ##      &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt;   
@@ -123,9 +126,10 @@
 <div id="data-for-graphics" class="section level3">
 <h3 class="hasAnchor">
 <a href="#data-for-graphics" class="anchor"></a>Data for graphics</h3>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="no">gfx_data</span> <span class="kw">&lt;-</span> <span class="no">nid_subset</span>[, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"year_completed"</span>, <span class="st">"state"</span>)]
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gfx_data</span> <span class="op">&lt;-</span> <span class="va">nid_subset</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"year_completed"</span>, <span class="st">"state"</span><span class="op">)</span><span class="op">]</span>
 
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">gfx_data</span>)</pre></body></html></div>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">gfx_data</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 2
 ##   year_completed state
 ##            &lt;dbl&gt; &lt;chr&gt;
@@ -139,34 +143,38 @@
 <div id="counts-of-number-of-dams-built-per-decade-or-other-time-period-of-interest" class="section level3">
 <h3 class="hasAnchor">
 <a href="#counts-of-number-of-dams-built-per-decade-or-other-time-period-of-interest" class="anchor"></a>Counts of number of dams built per decade or other time period of interest</h3>
-<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="no">gfx_data</span>$<span class="no">year</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span>(<span class="no">gfx_data</span>$<span class="no">year_completed</span>,
-                     <span class="kw">breaks</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0</span>, <span class="fl">1850</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="fl">1900</span>, <span class="fl">2000</span>, <span class="fl">10</span>), <span class="fl">2014</span>),
-                     <span class="kw">labels</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"&lt;1850"</span>, <span class="st">"1850-1900"</span>, <span class="st">"1910"</span>, <span class="st">"1920"</span>, <span class="st">"1930"</span>,
-                              <span class="st">"1940"</span>, <span class="st">"1950"</span>, <span class="st">"1960"</span>, <span class="st">"1970"</span>, <span class="st">"1980"</span>, <span class="st">"1990"</span>,
-                              <span class="st">"2000"</span>, <span class="st">"2014"</span>))
-<span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span>(<span class="no">gfx_data</span>$<span class="no">year</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gfx_data</span><span class="op">$</span><span class="va">year</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">gfx_data</span><span class="op">$</span><span class="va">year_completed</span>, 
+                     breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1850</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1900</span>, <span class="fl">2000</span>, <span class="fl">10</span><span class="op">)</span>, <span class="fl">2014</span><span class="op">)</span>, 
+                     labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"&lt;1850"</span>, <span class="st">"1850-1900"</span>, <span class="st">"1910"</span>, <span class="st">"1920"</span>, <span class="st">"1930"</span>,
+                              <span class="st">"1940"</span>, <span class="st">"1950"</span>, <span class="st">"1960"</span>, <span class="st">"1970"</span>, <span class="st">"1980"</span>, <span class="st">"1990"</span>, 
+                              <span class="st">"2000"</span>, <span class="st">"2014"</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">gfx_data</span><span class="op">$</span><span class="va">year</span><span class="op">)</span></code></pre></div>
 <pre><code>## 
 ##     &lt;1850 1850-1900      1910      1920      1930      1940      1950      1960 
 ##       569      2351      1460      1992      2329      4144      5028     13318 
 ##      1970      1980      1990      2000      2014 
 ##     18935     12167      5148      4629      3770</code></pre>
-<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="no">year_counts</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span>(<span class="no">gfx_data</span>$<span class="no">year</span>), <span class="kw">stringsAsFactors</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>(<span class="no">year_counts</span>) <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Year"</span>, <span class="st">"Count"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">year_counts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">gfx_data</span><span class="op">$</span><span class="va">year</span><span class="op">)</span>, stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">year_counts</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Year"</span>, <span class="st">"Count"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="histogram-of-number-of-dams-by-time-period" class="section level3">
 <h3 class="hasAnchor">
 <a href="#histogram-of-number-of-dams-by-time-period" class="anchor"></a>Histogram of number of dams by time period</h3>
-<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="no">gfx_bar</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="no">year_counts</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="no">Year</span>, <span class="kw">y</span> <span class="kw">=</span> <span class="no">Count</span>))
-<span class="no">gfx_bar</span> <span class="kw">&lt;-</span> <span class="no">gfx_bar</span> + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span>(<span class="kw">position</span> <span class="kw">=</span> <span class="st">"dodge"</span>, <span class="kw">stat</span> <span class="kw">=</span> <span class="st">"identity"</span>)
-<span class="no">gfx_bar</span> <span class="kw">&lt;-</span> <span class="no">gfx_bar</span> + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span>(<span class="st">"Number of Dams"</span>) + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span>(<span class="st">"Year of Completion"</span>)
-<span class="no">gfx_bar</span> <span class="kw">&lt;-</span> <span class="no">gfx_bar</span> + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Number of Dams in the NID Database"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gfx_bar</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">year_counts</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Year</span>, y <span class="op">=</span> <span class="va">Count</span><span class="op">)</span><span class="op">)</span>
+<span class="va">gfx_bar</span> <span class="op">&lt;-</span> <span class="va">gfx_bar</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"dodge"</span>, stat <span class="op">=</span> <span class="st">"identity"</span><span class="op">)</span>
+<span class="va">gfx_bar</span> <span class="op">&lt;-</span> <span class="va">gfx_bar</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Number of Dams"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Year of Completion"</span><span class="op">)</span>
+<span class="va">gfx_bar</span> <span class="op">&lt;-</span> <span class="va">gfx_bar</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Number of Dams in the NID Database"</span><span class="op">)</span></code></pre></div>
 <p><img src="dams_files/figure-html/fig1plot-1.png" width="768" style="display: block; margin: auto;"></p>
 </div>
 <div id="counts-of-dams-per-state-in-the-us-mainland" class="section level3">
 <h3 class="hasAnchor">
 <a href="#counts-of-dams-per-state-in-the-us-mainland" class="anchor"></a>Counts of dams per state in the US mainland</h3>
-<div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="no">gfx_data</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span>(<span class="no">gfx_data</span>, !(<span class="no">state</span> <span class="kw">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"AK"</span>, <span class="st">"HI"</span>, <span class="st">"PR"</span>, <span class="st">"GU"</span>)))
-<span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span>(<span class="no">gfx_data</span>$<span class="no">state</span>))</pre></body></html></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gfx_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">gfx_data</span>, <span class="op">!</span><span class="op">(</span><span class="va">state</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"AK"</span>, <span class="st">"HI"</span>, <span class="st">"PR"</span>, <span class="st">"GU"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">gfx_data</span><span class="op">$</span><span class="va">state</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## 
 ##   DE   RI   VT   AZ   MD   NM   ID   NV   ME   WV   LA   NH   WA   NJ   CT   UT 
 ##   83  234  368  376  400  407  472  525  581  586  609  652  802  834  845  860 
@@ -178,43 +186,45 @@
 <div id="map-of-dams-per-state-in-the-us-mainland" class="section level3">
 <h3 class="hasAnchor">
 <a href="#map-of-dams-per-state-in-the-us-mainland" class="anchor"></a>Map of dams per state in the US mainland</h3>
-<div class="sourceCode" id="cb14"><html><body><pre class="r"><span class="no">state_counts</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span>(<span class="no">gfx_data</span>$<span class="no">state</span>), <span class="kw">stringsAsFactors</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>(<span class="no">state_counts</span>) <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"state"</span>, <span class="st">"Count"</span>)
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">state_counts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">gfx_data</span><span class="op">$</span><span class="va">state</span><span class="op">)</span>, stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">state_counts</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"state"</span>, <span class="st">"Count"</span><span class="op">)</span>
 
 <span class="co"># add long names of states</span>
-<span class="no">state_names</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="kw">state</span> <span class="kw">=</span> <span class="no">state.abb</span>,
-                          <span class="kw">name</span> <span class="kw">=</span> <span class="no">state.name</span>,
-                          <span class="kw">stringsAsFactors</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
-<span class="no">gfx_data</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/merge.html">merge</a></span>(<span class="no">state_counts</span>, <span class="no">state_names</span>, <span class="kw">by</span> <span class="kw">=</span> <span class="st">"state"</span>)
+<span class="va">state_names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>state <span class="op">=</span> <span class="va">state.abb</span>, 
+                          name <span class="op">=</span> <span class="va">state.name</span>, 
+                          stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+<span class="va">gfx_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/merge.html">merge</a></span><span class="op">(</span><span class="va">state_counts</span>, <span class="va">state_names</span>, by <span class="op">=</span> <span class="st">"state"</span><span class="op">)</span>
 <span class="co"># change state name to lower case to be consistent with ggplot</span>
-<span class="no">gfx_data</span>$<span class="no">name</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/chartr.html">tolower</a></span>(<span class="no">gfx_data</span>$<span class="no">name</span>)
+<span class="va">gfx_data</span><span class="op">$</span><span class="va">name</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/chartr.html">tolower</a></span><span class="op">(</span><span class="va">gfx_data</span><span class="op">$</span><span class="va">name</span><span class="op">)</span>
 
 <span class="co"># geo reference data on states from ggplot</span>
-<span class="no">geo_state</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/map_data.html">map_data</a></span>(<span class="st">"state"</span>)
+<span class="va">geo_state</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/map_data.html">map_data</a></span><span class="op">(</span><span class="st">"state"</span><span class="op">)</span>
 
 <span class="co"># merge data with above for graphics</span>
-<span class="no">gfx_data</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/merge.html">merge</a></span>(<span class="no">geo_state</span>, <span class="no">gfx_data</span>, <span class="kw">by.x</span> <span class="kw">=</span> <span class="st">"region"</span>, <span class="kw">by.y</span> <span class="kw">=</span> <span class="st">"name"</span>)
-<span class="no">gfx_data</span> <span class="kw">&lt;-</span> <span class="no">gfx_data</span>[<span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span>(<span class="no">gfx_data</span>$<span class="no">order</span>), ]
+<span class="va">gfx_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/merge.html">merge</a></span><span class="op">(</span><span class="va">geo_state</span>, <span class="va">gfx_data</span>, by.x <span class="op">=</span> <span class="st">"region"</span>, by.y <span class="op">=</span> <span class="st">"name"</span><span class="op">)</span>
+<span class="va">gfx_data</span> <span class="op">&lt;-</span> <span class="va">gfx_data</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span><span class="op">(</span><span class="va">gfx_data</span><span class="op">$</span><span class="va">order</span><span class="op">)</span>, <span class="op">]</span>
 
 <span class="co"># discretize state counts</span>
-<span class="no">color_breaks</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0</span>, <span class="fl">100</span>, <span class="fl">500</span>, <span class="fl">1000</span>, <span class="fl">2000</span>, <span class="fl">3000</span>, <span class="fl">4000</span>, <span class="fl">5000</span>, <span class="fl">7500</span>)
-<span class="no">color_labels</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"&lt;100"</span>, <span class="st">"100 - 500"</span>, <span class="st">"500 - 1000"</span>, <span class="st">"1000 - 2000"</span>,
-                  <span class="st">"2000 - 3000"</span>, <span class="st">"3000 - 4000"</span>, <span class="st">"4000 - 5000"</span>, <span class="st">"5000 - 7500"</span>)
-<span class="no">gfx_data</span>$<span class="no">dams</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span>(<span class="no">gfx_data</span>$<span class="no">Count</span>,
-                     <span class="kw">breaks</span> <span class="kw">=</span> <span class="no">color_breaks</span>,
-                     <span class="kw">labels</span> <span class="kw">=</span> <span class="no">color_labels</span>)
+<span class="va">color_breaks</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">100</span>, <span class="fl">500</span>, <span class="fl">1000</span>, <span class="fl">2000</span>, <span class="fl">3000</span>, <span class="fl">4000</span>, <span class="fl">5000</span>, <span class="fl">7500</span><span class="op">)</span>
+<span class="va">color_labels</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"&lt;100"</span>, <span class="st">"100 - 500"</span>, <span class="st">"500 - 1000"</span>, <span class="st">"1000 - 2000"</span>,
+                  <span class="st">"2000 - 3000"</span>, <span class="st">"3000 - 4000"</span>, <span class="st">"4000 - 5000"</span>, <span class="st">"5000 - 7500"</span><span class="op">)</span>
+<span class="va">gfx_data</span><span class="op">$</span><span class="va">dams</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">gfx_data</span><span class="op">$</span><span class="va">Count</span>, 
+                     breaks <span class="op">=</span> <span class="va">color_breaks</span>, 
+                     labels <span class="op">=</span> <span class="va">color_labels</span><span class="op">)</span>
 
-<span class="no">gfx_map</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">gfx_data</span>)
-<span class="no">gfx_map</span> <span class="kw">&lt;-</span> <span class="no">gfx_map</span> + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_polygon.html">geom_polygon</a></span>(<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="no">long</span>, <span class="kw">y</span> <span class="kw">=</span> <span class="no">lat</span>, <span class="kw">group</span> <span class="kw">=</span> <span class="no">group</span>,
-            <span class="kw">fill</span> <span class="kw">=</span> <span class="no">dams</span>))
-<span class="no">gfx_map</span> <span class="kw">&lt;-</span> <span class="no">gfx_map</span> + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_path</a></span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">geo_state</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="no">long</span>, <span class="kw">y</span> <span class="kw">=</span> <span class="no">lat</span>,
-            <span class="kw">group</span> <span class="kw">=</span> <span class="no">group</span>, <span class="kw">fill</span> <span class="kw">=</span> <span class="fl">NA</span>))</pre></body></html></div>
+<span class="va">gfx_map</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">gfx_data</span><span class="op">)</span>
+<span class="va">gfx_map</span> <span class="op">&lt;-</span> <span class="va">gfx_map</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_polygon.html">geom_polygon</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">long</span>, y <span class="op">=</span> <span class="va">lat</span>, group <span class="op">=</span> <span class="va">group</span>,
+            fill <span class="op">=</span> <span class="va">dams</span><span class="op">)</span><span class="op">)</span>
+<span class="va">gfx_map</span> <span class="op">&lt;-</span> <span class="va">gfx_map</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_path</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">geo_state</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">long</span>, y <span class="op">=</span> <span class="va">lat</span>,
+            group <span class="op">=</span> <span class="va">group</span>, fill <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## Warning: Ignoring unknown aesthetics: fill</code></pre>
-<div class="sourceCode" id="cb16"><html><body><pre class="r"><span class="no">gfx_map</span> <span class="kw">&lt;-</span> <span class="no">gfx_map</span> + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">title</span> <span class="kw">=</span> <span class="st">"Number of Dams in the NID Database"</span>,
-            <span class="kw">x</span> <span class="kw">=</span> <span class="kw">NULL</span>, <span class="kw">y</span> <span class="kw">=</span> <span class="kw">NULL</span>))
-<span class="no">gfx_map</span> <span class="kw">&lt;-</span> <span class="no">gfx_map</span> + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span>(<span class="kw">fill</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html">guide_legend</a></span>(<span class="kw">title</span> <span class="kw">=</span> <span class="st">"Number of Dams"</span>))
-<span class="no">gfx_map</span> <span class="kw">&lt;-</span> <span class="no">gfx_map</span> + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span>(<span class="kw">palette</span> <span class="kw">=</span> <span class="st">"Accent"</span>)
-<span class="no">gfx_map</span> <span class="kw">&lt;-</span> <span class="no">gfx_map</span> + <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_map.html">coord_map</a></span>()</pre></body></html></div>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gfx_map</span> <span class="op">&lt;-</span> <span class="va">gfx_map</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Number of Dams in the NID Database"</span>,
+            x <span class="op">=</span> <span class="cn">NULL</span>, y <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span><span class="op">)</span>
+<span class="va">gfx_map</span> <span class="op">&lt;-</span> <span class="va">gfx_map</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html">guide_legend</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Number of Dams"</span><span class="op">)</span><span class="op">)</span>
+<span class="va">gfx_map</span> <span class="op">&lt;-</span> <span class="va">gfx_map</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Accent"</span><span class="op">)</span>
+<span class="va">gfx_map</span> <span class="op">&lt;-</span> <span class="va">gfx_map</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_map.html">coord_map</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p><img src="dams_files/figure-html/fig2plot-1.png" width="768"></p>
 </div>
 </div>
@@ -222,9 +232,10 @@
 <h2 class="hasAnchor">
 <a href="#other-analyses-flood-control-dams" class="anchor"></a>Other Analyses: Flood Control Dams</h2>
 <p>A number of interesting analyses could be performed with the dataset. Of interest to water resources managers and hydrologists is the location of flood control dams. It is interesting to see a few states like Texas have a large number of flood control dams.</p>
-<div class="sourceCode" id="cb17"><html><body><pre class="r"><span class="no">flood_dams</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span>(<span class="no">nid_subset</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/grep.html">grep</a></span>(<span class="st">"C"</span>, <span class="no">purposes</span>)) <span class="kw">&gt;</span> <span class="fl">0</span>)
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">flood_dams</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">nid_subset</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html">grep</a></span><span class="op">(</span><span class="st">"C"</span>, <span class="va">purposes</span><span class="op">)</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span>(<span class="no">flood_dams</span>$<span class="no">state</span>)</pre></body></html></div>
+<span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">flood_dams</span><span class="op">$</span><span class="va">state</span><span class="op">)</span></code></pre></div>
 <pre><code>## 
 ##   AK   AL   AR   AZ   CA   CO   CT   DE   FL   GA   GU   HI   IA   ID   IL   IN 
 ##  107 2273 1263  376 1576 1803  845   83 1109 5306    1  133 4018  472 1662  912 
@@ -248,11 +259,11 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Gopi Goteti, Joseph Stachelek.</p>
+  <p>Developed by Gopi Goteti, Jemma Stachelek.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

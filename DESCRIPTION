@@ -9,7 +9,7 @@ Description: The single largest source of dams in the United States is the
 Version: 0.3.0
 Authors@R: c(
     person("Gopi", "Goteti", role = c("aut")),
-    person("Joseph", "Stachelek", role = c("aut", "cre"), email = "stachel2@msu.edu")
+    person("Jemma", "Stachelek", role = c("aut", "cre"), email = "stachel2@msu.edu")
   )
 URL: https://github.com/jsta/dams
 BugReports: http://www.github.com/jsta/dams/issues
@@ -31,6 +31,6 @@ Depends:
     R (>= 2.10)
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 VignetteBuilder: knitr
 Encoding: UTF-8

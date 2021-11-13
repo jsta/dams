@@ -27,6 +27,8 @@ devtools::install_github("jsta/dams")
 
 ## Usage
 
+The latest data included in the package goes up to **2019**.
+
 ``` r
 library(dams)
 data(nid_subset)

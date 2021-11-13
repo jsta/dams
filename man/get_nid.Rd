@@ -12,7 +12,7 @@ get_nid(dest = "NID2019_U.xlsx", overwrite = FALSE)
 \item{overwrite}{logical. overwrite.}
 }
 \value{
-The entire NID dataset \link{nid_all}, including all 74000+ records from \url{http://nid.usace.army.mil/}
+The entire NID dataset \link{nid_all}, including all 74000+ records from \url{https://nid.usace.army.mil/}
 }
 \description{
 Retrieve \link{nid_all} from the official NID site

@@ -41,6 +41,6 @@ descriptions](https://jsta.github.io/dams/reference/nid_all.html).
 
 ## References
 
-<http://nid.usace.army.mil/>
+<https://nid.usace.army.mil/>
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->

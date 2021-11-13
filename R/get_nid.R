@@ -10,7 +10,7 @@
 #' @importFrom readxl read_excel
 #' @importFrom utils download.file
 #'
-#' @return The entire NID dataset [nid_all], including all 74000+ records from <http://nid.usace.army.mil/>
+#' @return The entire NID dataset [nid_all], including all 74000+ records from <https://nid.usace.army.mil/>
 #'
 #' @examples
 #' \dontrun{

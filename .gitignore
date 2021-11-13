@@ -16,3 +16,6 @@ inst/doc
 old
 data-raw/NID2019_U.xlsx
 CRAN-RELEASE
+.vscode
+README.html
+midland.png
